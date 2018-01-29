@@ -1,0 +1,10 @@
+2018-01-29 10:27:35Controller:app\Controller\AdminController  action:orderList
+2018-01-29 10:27:36Controller:app\Controller\AdminController  action:orderList
+2018-01-29 10:27:36Controller:app\Controller\AdminController  action:orderList
+2018-01-29 10:27:38Controller:app\Controller\AdminController  action:orderList
+2018-01-29 10:27:40Controller:app\Controller\CommonController  action:logout
+2018-01-29 10:27:41Controller:app\Controller\CommonController  action:login
+2018-01-29 10:27:49Controller:app\Controller\CommonController  action:login
+2018-01-29 10:27:50Controller:app\Controller\AdminController  action:index
+2018-01-29 10:27:51Controller:app\Controller\AdminController  action:orderList
+2018-01-29 10:27:52Controller:app\Controller\UserController  action:index
