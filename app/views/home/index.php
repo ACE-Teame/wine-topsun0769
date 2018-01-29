@@ -72,7 +72,7 @@
     <section class="order" id="order">
         <h2>订单信息</h2>
         <div class="content">
-            <form>
+            <form id="form">
                 <div class="entry">
                     <div class="left"><label><em>*</em>产品</label></div>
                     <div class="right">                     
@@ -93,7 +93,7 @@
                 </div> -->
                 <div class="entry">
                     <div class="left"><label><em>*</em>姓名</label></div>
-                    <div class="right"><input type="text" name="name"></div>                    
+                    <div class="right"><input type="text" name="username"></div>                    
                 </div>
                 <div class="entry">
                     <div class="left"><label><em>*</em>手机</label></div>
@@ -103,16 +103,16 @@
                     <div class="left"><label><em>*</em>地区</label></div>                 
                     <div class="right">
                         <div class="address-box">
-                          <select name="province">
-                            <option value="">北京</option>
-                            <option value="">上海</option>
-                            <option value="">广州</option>
-                            <option value="">深圳</option>
+                          <select name="province" onchange="province_change(this)">
+                                <option value="">选省份</option>
+                            <?php foreach ($province_list as $province): ?>
+                                <option value="<?=$province['id']?>"><?=$province['province_name']?></option> 
+                            <?php endforeach ?>
                           </select>
-                          <select name="city">
+                          <select name="city" id="city" onchange="city_change(this)">
                             <option value="">选城市</option>
                           </select>
-                          <select name="area">
+                          <select name="area" id="area">
                             <option value="">选地区</option>
                           </select>
                         </div>
@@ -124,7 +124,7 @@
                 </div>
                 <div class="entry">
                     <div class="left"><label><em>*</em>金额</label></div>                 
-                    <div class="right"><input type="text" id="total" readonly value="590" style="width: 100px;">元</div>
+                    <div class="right"><input type="text" name="total" id="total" readonly value="590" style="width: 100px;">元</div>
                 </div>
                 <div class="entry">
                     <div class="left"><label><em>*</em>付款</label></div>                 
@@ -132,12 +132,12 @@
                 </div>
                 <div class="entry">
                     <div class="left"><label>留言</label></div>
-                    <div class="right"><textarea></textarea></div>
+                    <div class="right"><textarea name="message"></textarea></div>
                 </div>
             </form>
         </div>
         <div class="submit">
-            <a class="btn" href="javascript:alert('提交成功')">立即提交订单</a>
+            <a class="btn" href="javascript:;" onclick="submit_contect()">立即提交订单</a>
         </div>
         
     </section>
@@ -191,6 +191,63 @@
     </nav>
 </div>
 <script type="text/javascript">  
+    /**
+     * 省份改变获取城市
+     */
+    function province_change(it)
+    {
+        var province_id = $(it).val();
+        if (province_id) {
+            $.post('<?php echo base_url('index/getCityList')?>', {province_id: province_id}, function(data) {
+                var html = '<option value="">选城市</option>';
+                for(x in data.msg) {
+                    html += '<option value="'+data.msg[x]['id']+'">'+data.msg[x]['city_name']+'</option>'
+                }
+                $("#city").html(html);
+            }, 'JSON');
+        }
+    }
+
+    /**
+     * 省份改变获取地址
+     * @param  obj it 
+     */
+    function city_change(it)
+    {
+        var city_id = $(it).val();
+        if (city_id) {
+            $.post('<?php echo base_url('index/getAreaList')?>', {city_id: city_id}, function(data) {
+                var html = '<option value="">选地区</option>';
+                for(x in data.msg) {
+                    html += '<option value="'+data.msg[x]['id']+'">'+data.msg[x]['area_name']+'</option>'
+                }
+                $("#area").html(html);
+            }, 'JSON');
+        }
+    }
+
+    var submit_flag = true;
+    function submit_contect(form_id) {
+        if (submit_flag == true) {
+            submit_flag = true;
+            $.ajax({
+                url: '<?php echo base_url('index/submitContect') ?>',
+                type: 'POST',
+                dataType: 'json',
+                data: $('#form').serialize(),
+                success:function(data) {
+                    if(data.status == 200) {
+                        alert('申请成功');
+                        location.reload();
+                    }else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        } else {
+            alert('请勿重复提交或刷新重试');return;
+        }
+    }
   function countTime() {  
       //获取当前时间  
       var date = new Date();  

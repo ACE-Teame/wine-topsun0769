@@ -51,8 +51,12 @@ class IndexController extends Home_Controller
         $postData = post();
         $this->_ckeckData($postData);
         
-        $postData['time'] = time();
-        $postData['ip']   = getIp();
+        $postData['time']     = time();
+        $postData['ip']       = getIp();
+        $postData['province'] = parent::$model->select('province', 'province_name', ['id' => $postData['province']])[0];
+        $postData['city']     = parent::$model->select('city', 'city_name', ['id' => $postData['city']])[0];
+        $postData['area']     = parent::$model->select('area', 'area_name', ['id' => $postData['area']])[0];
+
         parent::$model->insert('contect', $postData);
         if(parent::$model->id()) {
             ajaxReturn(200);
@@ -61,13 +65,33 @@ class IndexController extends Home_Controller
         }
     }
 
-    public function get_city()
+    /**
+     * 获取城市列表
+     * @return json
+     */
+    public function getCityList()
     {
         $province_id = intval(post('province_id'));
 
         if ($province_id) {
-            $city_list = parent::$model->select('city', ['id', 'city_name'], ['province_id' => $province_id]);
-            ajaxReturn(200, $city_list);
+            $cityList = parent::$model->select('city', ['id', 'city_name'], ['province_id' => $province_id]);
+            ajaxReturn(200, $cityList);
+        }
+
+        ajaxReturn(400);
+    }
+
+    /**
+     * 获得地区列表
+     * @return json 
+     */
+    public function getAreaList()
+    {
+        $city_id = intval(post('city_id'));
+
+        if ($city_id) {
+            $areaList = parent::$model->select('area', ['id', 'area_name'], ['city_id' => $city_id]);
+            ajaxReturn(200, $areaList);
         }
 
         ajaxReturn(400);
