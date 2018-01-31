@@ -19,7 +19,7 @@
                     </div>
                      <div class="entry">
                         <label>产品名:</label>
-                        <input type="text" name="c" placeholder="">
+                        <input type="text" name="goods_name" placeholder="">
                     </div>
                     <div class="entry">
                         <label>用户名:</label>
@@ -52,7 +52,7 @@
                                 <th>金额</th>
                                 <th>留言</th>
                                 <th>提交时间</th>
-                                <th>IP</th>
+                                <!-- <th>IP</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -61,14 +61,14 @@
                                     <td><input type="checkbox" class="chk" name="order[]" value="<?php echo $order['id'] ?>"</td>
                                     <td><?php echo $number++ ?></td>
                                     <td><?php echo $order['c'] ?></td>
-                                    <td><?php echo $order['username'] ?></td>
+                                    <td><?php echo $order['goods_name'] ?></td>
                                     <td><?php echo $order['username'] ?></td>
                                     <td><?php echo $order['phone'] ?></td>
-                                    <td><?php echo $order['username'] ?></td>
-                                    <td><?php echo $order['username'] ?></td>
-                                    <td><?php echo $order['username'] ?></td>
+                                    <td><?php echo $order['province'] . $order['city'] . $order['area'] . ' ' . $order['address'] ?></td>
+                                    <td><?php echo $order['total'] ?></td>
+                                    <td><?php echo $order['message'] ?></td>
                                     <td><?php echo get_date($order['time']) ?></td>
-                                    <td><?php echo $order['ip'] ?></td>
+                                    <!-- <td><?php echo $order['ip'] ?></td> -->
                                 </tr>
                             <?php endforeach ?>
                         </tbody>

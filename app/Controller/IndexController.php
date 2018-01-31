@@ -8,6 +8,12 @@ use app\core\Home_Controller;
  */
 class IndexController extends Home_Controller
 {
+
+    public $goodsNameList = [
+        '590'  => '法国原装进口葡萄酒！抢购价590 6瓶+赠品',
+        '1090' => '法国原装进口葡萄酒！抢购价1090 12瓶+赠品',
+        '1590' => '法国原装进口葡萄酒！抢购价1590 18瓶+赠品',
+    ];
 	public function __construct()
 	{
 		parent::__construct();
@@ -56,8 +62,12 @@ class IndexController extends Home_Controller
         $postData['province'] = parent::$model->select('province', 'province_name', ['id' => $postData['province']])[0];
         $postData['city']     = parent::$model->select('city', 'city_name', ['id' => $postData['city']])[0];
         $postData['area']     = parent::$model->select('area', 'area_name', ['id' => $postData['area']])[0];
+        $postData['goods_name'] = $this->goodsNameList[$postData['product_id']];
 
+        unset($postData['product_id']);
+        // p($postData);
         parent::$model->insert('contect', $postData);
+        // p(parent::$model->error());exit;
         if(parent::$model->id()) {
             ajaxReturn(200);
         }else {

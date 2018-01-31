@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50714
+Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : wine-topsun0769
 
 Target Server Type    : MYSQL
-Target Server Version : 50714
+Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-01-29 18:58:36
+Date: 2018-01-31 20:32:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3567,14 +3567,13 @@ CREATE TABLE `contect` (
   `province` varchar(32) DEFAULT NULL,
   `city` varchar(32) DEFAULT NULL,
   `area` varchar(32) DEFAULT NULL,
+  `goods_name` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of contect
 -- ----------------------------
-INSERT INTO `contect` VALUES ('5', '是的', '18336344600', '127.0.0.1', '1517222993', null, '0.00', '0', '是第三代', '是第三代', '1', '1', '4');
-INSERT INTO `contect` VALUES ('6', '是第三代', '18336344521', '127.0.0.1', '1517223383', null, '1590.00', '1', '三大三打三', '实打实大师的', '河北省', '秦皇岛市', '山海关区');
 
 -- ----------------------------
 -- Table structure for `province`
@@ -3649,4 +3648,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '$2y$10$BMX/JDTSpXLSHZ/kjUjSmu3JyepTKS4UrTQIGD8NG0Qur.MaZQakC', '1514952129', '1514952129', '1514952129', '::1', '1');
+INSERT INTO `user` VALUES ('1', 'admin', '$2y$10$BMX/JDTSpXLSHZ/kjUjSmu3JyepTKS4UrTQIGD8NG0Qur.MaZQakC', '1514952129', '1514952129', '1517400257', '127.0.0.1', '1');

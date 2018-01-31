@@ -79,7 +79,7 @@
                 <div class="entry">
                     <div class="left"><label><em>*</em>产品</label></div>
                     <div class="right">                     
-                        <select id="product-price">
+                        <select id="product-price" name="product_id">
                             <option value="590">法国原装进口葡萄酒！抢购价590 6瓶+赠品</option>
                             <option value="1090">法国原装进口葡萄酒！抢购价1090 12瓶+赠品</option>
                             <option value="1590">法国原装进口葡萄酒！抢购价1590 18瓶+赠品</option>
@@ -137,6 +137,7 @@
                     <div class="left"><label>留言</label></div>
                     <div class="right"><textarea name="message"></textarea></div>
                 </div>
+                <input type="hidden" name="c" value="<?=$c?>">
             </form>
         </div>
         <div class="submit">
@@ -233,9 +234,9 @@
         }
     }
 
-    var submit_flag = true;
+    var submit_flag = false;
     function submit_contect(form_id) {
-        if (submit_flag == true) {
+        if (submit_flag == false) {
             submit_flag = true;
             $.ajax({
                 url: '<?php echo base_url('index/submitContect') ?>',

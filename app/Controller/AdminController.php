@@ -33,12 +33,16 @@ class AdminController extends Wb_Controller
             $where['username[~]'] = get('username');
         }
 
-        if(get('c') || get('c') == 0) {
+        if(get('c') || get('c') == '0') {
             $where['c[~]'] = get('c');
         }
 
         if(get('phone')) {
             $where['phone[~]'] = get('phone');
+        }
+
+        if(get('goods_name')) {
+            $where['goods_name[~]'] = get('goods_name');
         }
 
         if(get('start_date') && get('end_date')) {
@@ -80,7 +84,6 @@ class AdminController extends Wb_Controller
         $objPage           = new page($data['count'], $pageNum, $now_page, '?page={page}' . $parameter);
         $data['pageNum']   = $pageNum;
         $data['pageList']  = $objPage->myde_write();
-
         // 取出导出uri参数
         if($parameter) {
             $data['exportUri'] = '?' . ltrim($parameter, '&');
@@ -126,10 +129,11 @@ class AdminController extends Wb_Controller
         }
         $orderData  = parent::$model->select('contect', '*', $where);
 
-        echo "\xEF\xBB\xBF子链接,用户名,电话,提交时间\r";
+        echo "\xEF\xBB\xBF子链接,产品名,用户名,手机号,详细地址,金额,留言,提交时间\r";
         ob_end_flush();  
         foreach($orderData as $order) {  
-            echo $order['c'] . "," . "\"\t" . $order['username'] . "\",\"\t" . $order['phone'] . "\",\"\t" .  get_date($order['time']). "\"\t\r";  
+            $address = $order['province'] . $order['city'] . $order['area'] . ' ' . $order['address'];
+            echo $order['c'] . "," . "\"\t" . $order['goods_name'] . "\",\"\t" . $order['username'] . "\",\"\t" . $order['phone'] . "\",\"\t" . $address . "\",\"\t" . $order['total'] . "\",\"\t" . $order['message'] . "\",\"\t" . get_date($order['time']). "\"\t\r";  
             flush();  
         }  
     }
