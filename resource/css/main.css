@@ -87,7 +87,7 @@ nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #e30; }
 .menu { width: 100%; }
 .menu li {
 	float: left;
-	width: 50%;
+	width: 33.3333%;
 	border-right: 1px dotted #f66;
 	box-sizing: border-box;
 	line-height: 45px;

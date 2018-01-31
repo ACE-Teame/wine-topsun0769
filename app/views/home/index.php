@@ -17,10 +17,10 @@
         <div class="price">         
             <ul class="list clear">
                 <li>￥590元</li>
-                <li>
+                <!-- <li>
                     <div class="title">原价</div>
                     <div class="number">590元</div>
-                </li>
+                </li> -->
                 <li>
                     <div class="title">折扣</div>
                     <div class="number">0</div>
@@ -31,15 +31,15 @@
                 </li>
             </ul>
 
-            <ul class="time clear">
+<!--             <ul class="time clear">
                 <li>8125人已购买</li>
                 <li>
                     <span id="_d">00</span>天
-              <span id="_h">00</span>小时
-              <span id="_m">00</span>分
-              <span id="_s">00</span>秒
-        </li>
-            </ul>
+                    <span id="_h">00</span>小时
+                    <span id="_m">00</span>分
+                    <span id="_s">00</span>秒
+                </li>
+            </ul> -->
         </div>
         
         <div class="buy"><a class="btn" href="#order">立即购买</a></div>
@@ -63,9 +63,12 @@
         <div><img src="<?php echo image('14.jpg') ?>"></div>
         <div><img src="<?php echo image('15.jpg') ?>"></div>
         <div><img src="<?php echo image('16.jpg') ?>"></div>
-        <div><img src="<?php echo image('17.jpg') ?>"></div>
+        <!-- <div><img src="<?php echo image('17.jpg') ?>"></div> -->
         <div><img src="<?php echo image('18.jpg') ?>"></div>
-        <div><img src="<?php echo image('19.jpg') ?>"></div>
+        <div><img src="<?php echo image('20.jpg') ?>"></div>
+        <div><img src="<?php echo image('19_01.jpg') ?>"></div>
+        <div><img src="<?php echo image('20.png') ?>"></div>
+        <div><img src="<?php echo image('19_02.jpg') ?>"></div>
     </section>
 
 
@@ -77,9 +80,9 @@
                     <div class="left"><label><em>*</em>产品</label></div>
                     <div class="right">                     
                         <select id="product-price">
-                            <option value="590">法国原装进口葡萄酒！抢购价590一箱</option>
-                            <option value="1090">法国原装进口葡萄酒！抢购价1090两箱</option>
-                            <option value="1590">法国原装进口葡萄酒！抢购价1590三箱</option>
+                            <option value="590">法国原装进口葡萄酒！抢购价590 6瓶+赠品</option>
+                            <option value="1090">法国原装进口葡萄酒！抢购价1090 12瓶+赠品</option>
+                            <option value="1590">法国原装进口葡萄酒！抢购价1590 18瓶+赠品</option>
                         </select>               
                     </div>
                 </div>
@@ -177,7 +180,8 @@
         <div style="text-align: center"><img src="<?php echo image('foot.png') ?>"></div>
         <p>杭州醇源贸易有限公司</p>
         <p>版权所有 违者必究</p>
-        <p>闽ICP备16015077号-1</p>
+        <!-- <p>闽ICP备16015077号-1</p> -->
+        <p>粤ICP备14044442号-1</p>
     </footer>
     <nav>
         <ul class="menu clear">
@@ -185,7 +189,10 @@
                 <i class="iconfont icon-home"></i><a href="#order">在线下单</a>
             </li>
             <li>
-                <i class="iconfont icon-phone"></i><a href="tel:15113779231">电话咨询</a>
+                <i class="iconfont icon-phone"></i><a href="tel:4007111099">固定电话</a>
+            </li>
+            <li>
+                <i class="iconfont icon-phone"></i><a href="tel:13588437250">随身电话</a>
             </li>
         </ul>
     </nav>
